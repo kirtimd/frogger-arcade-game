@@ -27,7 +27,7 @@ To run the game, you will need to render the webpage. To render it, you'll need 
 To move the player, use the arrow keys on your keyboard.
 
 ## My Contribution
-I have implemented all of the Player class and part of the Enemy class(constructor and update()). Essentially, I have written the logic behind how the player and bugs move, how collisions are detected, and whether the game progresses or resets. The rest belongs to Udacity.
+I have implemented all of the Player class and part of the Enemy class(constructor and update()). Essentially, I have written the code for how the player and bugs move, how collisions are detected, and whether the game progresses or resets. The rest belongs to Udacity.
 
 ## Upcoming Additions/Improvements
 * Levels, with increasing difficulty :

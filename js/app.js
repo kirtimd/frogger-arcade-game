@@ -1,13 +1,9 @@
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 
-    //added by me:
     this.x = x;
     this.y = y;
     this.speed = speed;
@@ -20,10 +16,9 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
 
-    this.x += (this.speed * dt);
-    if(this.x >= 505) this.x = -101; //if you reach end of canvas, reset to 0
-      //console.log('in update: ');
-
+    this.x += this.speed*dt;
+    if(this.x >= 505) this.x = -101; //if it reached right edge of board, move
+                                    //back to the left side of board
 };
 
 // Draw the enemy on the screen, required method for game
@@ -31,46 +26,57 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+// The player class
 let Player = function() {
   this.sprite = 'images/char-boy.png';
+  //Player always starts at the bottom-left corner of the board
   this.x = 0;
-  this.y = 505;
+  this.y = 404;
 
 }
 
+//Updates player position after checking for collision with all enemies
 Player.prototype.update = function() {
   let player = this;
   allEnemies.forEach(function(enemy) {
-    //console.log('in update-- '+ player.x +'  '+ enemy.x);
-    if(Math.abs(player.x - enemy.x) < 10 && Math.abs(player.y - enemy.y) < 100) {
-      player.y = 505;
-      console.log('collision!');
+    //if both enemy's and player's left edge are within 100px of each other
+    if(Math.abs(player.x - enemy.x) < 100 &&
+      //and their y positions are 20px apart, then reset after 0.6sec
+      Math.abs(player.y - enemy.y) < 20) {
+        setTimeout(function () {
+          player.y = 404;
+        }, 0.6);
+      console.log('--collision!--');
       return;
     }
   });
 }
 
+//Same as Enemy's render()
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
+//Moves player according to keypress
 Player.prototype.handleInput = function(key) {
-
   switch(key) {
     case 'up':
-      if(this.y > 0) {
-        this.y -= 101;
-        if(this.y === 0) { //If player has reached water, then reset
-          this.y = 505;
+      if(this.y > 0) { //change y only if player not at on the left edge
+        this.y -= 85;
+        if(this.y <= 0) { //If player has reached water, then reset after 0.7sec
+          let player = this; //store 'this' in a variable to pass it to setTimeout
+          setTimeout(function () {
+            player.y = 404;
+          }, 700);
+
+          console.log('--Reached water--');
         }
+      }
     break;
 
     case 'down':
-      if(this.y < 505)
-        this.y += 101;
+      if(this.y < 404)
+        this.y += 85;
     break;
 
     case 'left':
@@ -82,25 +88,25 @@ Player.prototype.handleInput = function(key) {
       if(this.x < 404)
         this.x += 101;
     break;
-
-
-
   }
 }
 
-// Now instantiate your objects.
-let enemy1 = new Enemy(-101, 83 * 1, 10);
-let enemy2 = new Enemy(-202, 83 * 2, 30);
-let enemy3 = new Enemy(-101, 83 * 3, 20);
-// Place all enemy objects in an array called allEnemies
-let allEnemies = [enemy1, enemy2, enemy3];
+// Now we instantiate 5 enemy objects
+let enemy1 = new Enemy(-101, 60 , 100); //x, y, speed
+let enemy2 = new Enemy(-202, 145, 30);
+let enemy3 = new Enemy(-101, 230, 250);
+let enemy4 = new Enemy(-301, 145, 80);
+let enemy5 = new Enemy(-101, 230, 50);
 
-// Place the player object in a variable called player
+// Place all enemy objects in an array called allEnemies
+let allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
+
+// one Player object
 let player = new Player();
 
 
 // This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// Player.handleInput() method. 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
