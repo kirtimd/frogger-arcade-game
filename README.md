@@ -2,32 +2,36 @@
 
 ## Table of Contents
 
-- [Instructions](#instructions)
-- [Contributing](#contributing)
+- [Introduction](#{About})
+- [Contribution](#{My contribution})
+- [Additions/Improvements](#{Additions/Improvements to come})
 
-## Instructions
+## Introduction
 
-Use this [rubric](https://review.udacity.com/#!/rubrics/15/view) for self-checking your submission.
+This project is a part of Udacity's FEND program. The starter code repo by Udacity can be found here :
+<https://github.com/udacity/frontend-nanodegree-arcade-game>
 
-Make sure the functions you write are **object-oriented** - either class functions (like `Player` and `Enemy`) or class prototype functions such as `Enemy.prototype.checkCollisions`. Also make sure that the keyword `this` is used appropriately within your class and class prototype functions to refer to the object the function is called upon.
+### The Game
+#### Run
+To run the game, you will need to render the webpage. To render it, you'll need a copy of the source code.
+1. To clone/download this repo:
+`git clone https://github.com/kirtimd/frogger-arcade-game.git`
+2. To render the game, open index.html in any browser.
 
-Your **README.md** file should be updated with instructions on both how to 1. Run and 2. Play your arcade game.
+#### Play
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+* The goal is to help the player waiting at the bottom of the board to reach the water at the top.
+* You have to keep the player away from the enemy bugs, which move at varying speeds.
+* If the player collides with a bug or if player reaches water, the game is reset.
 
-## Contributing
+To move the player, use the arrow keys on your keyboard.
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+## My Contribution
+I have implemented all of the Player class and part of the Enemy class(constructor and update()). Essentially, I have written the logic behind how the player and bugs move, how collisions are detected, and whether the game progresses or resets. The rest belongs to Udacity.
 
-//content
-How to run :
-To run the game, you will need to render the webpage. You can clone/download this repo and then open index.html in any browser.
-
-How to play :
-You can move the player using the arrow keys on your keyboard.
-
-About the code
-This project is a part of Udacity's FEND program. The starter code repo can be found here :
-
-My contribution :
-I have implemented all of Player class and part of Enemy class. Essentially, I have written the logic behind how the player and bugs move, and the game progresses. The rest belongs to Udacity.
+## Additions/Improvements to come
+* Levels, with increasing difficulty :
+  * Larger grid
+  * More challenging enemies
+  * Impediments in path
+* Player types
