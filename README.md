@@ -3,8 +3,8 @@
 ## Table of Contents
 
 - [Introduction](#{About})
-- [Contribution](#{My contribution})
-- [Additions/Improvements](#{Additions/Improvements to come})
+- [Contribution](#{My-Contribution})
+- [Upcoming Additions/Improvements](#{Upcoming-Additions/Improvements})
 
 ## Introduction
 
@@ -29,7 +29,7 @@ To move the player, use the arrow keys on your keyboard.
 ## My Contribution
 I have implemented all of the Player class and part of the Enemy class(constructor and update()). Essentially, I have written the logic behind how the player and bugs move, how collisions are detected, and whether the game progresses or resets. The rest belongs to Udacity.
 
-## Additions/Improvements to come
+## Upcoming Additions/Improvements
 * Levels, with increasing difficulty :
   * Larger grid
   * More challenging enemies
