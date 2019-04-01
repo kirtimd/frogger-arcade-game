@@ -57,6 +57,18 @@ Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
+//Displays a 'Success!' message for 2sec, when player reaches water
+Player.prototype.displayWinMessage = function() {
+  let winMessage = document.createElement('h2');
+  let text = document.createTextNode('Success!');
+  winMessage.appendChild(text);
+  let body = document.getElementsByTagName('body')[0];
+  body.appendChild(winMessage);
+  setTimeout(function() {
+    body.removeChild(winMessage);
+  }, 2000);
+}
+
 //Moves player according to keypress
 Player.prototype.handleInput = function(key) {
   switch(key) {
@@ -68,7 +80,8 @@ Player.prototype.handleInput = function(key) {
           setTimeout(function () {
             player.y = 404;
           }, 700);
-
+          this.displayWinMessage(); //display a 'Success!' right below
+                                    //the board for 2sec
           console.log('--Reached water--');
         }
       }
@@ -106,7 +119,7 @@ let player = new Player();
 
 
 // This listens for key presses and sends the keys to your
-// Player.handleInput() method. 
+// Player.handleInput() method.
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',

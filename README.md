@@ -23,6 +23,7 @@ To run the game, you will need to render the webpage. To render it, you'll need 
 * The goal is to help the player waiting at the bottom of the board to reach the water at the top.
 * You have to keep the player away from the enemy bugs, which move at varying speeds.
 * If the player collides with a bug or if player reaches water, the game is reset.
+* When player reaches water, a simple 'Success!' message is displayed below the board for 2 seconds.
 
 To move the player, use the arrow keys on your keyboard.
 
