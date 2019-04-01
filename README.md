@@ -18,3 +18,16 @@ For detailed instructions on how to get started, check out this [guide](https://
 ## Contributing
 
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+
+//content
+How to run :
+To run the game, you will need to render the webpage. You can clone/download this repo and then open index.html in any browser.
+
+How to play :
+You can move the player using the arrow keys on your keyboard.
+
+About the code
+This project is a part of Udacity's FEND program. The starter code repo can be found here :
+
+My contribution :
+I have implemented all of Player class and part of Enemy class. Essentially, I have written the logic behind how the player and bugs move, and the game progresses. The rest belongs to Udacity.
